@@ -1,0 +1,126 @@
+.cardContainer {
+  padding: 0.25rem;
+  background-color: #111;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  background: #000;
+  border-radius: 30px;
+  padding: 8rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardText,
+.cardTextPlaying {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff;
+  user-select: none;
+  position: absolute;
+  max-width: 100px;
+  text-align: center;
+  line-height: 1.7;
+  pointer-events: none;
+}
+
+.cardText {
+  color: #fff;
+}
+
+.cardTextPlaying {
+  color: #888;
+}
+
+@media (max-width: 1080px) {
+  .card {
+    padding: 7rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 5.5rem 0;
+  }
+
+  .cardText {
+    font-size: 1.25rem;
+  }
+
+  .cardTextPlaying {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 7rem 0;
+  }
+
+  .cardText {
+    font-size: 1.5rem;
+  }
+
+  .cardTextPlaying {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 5.25rem 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 4.5rem 0;
+  }
+
+  .cardText {
+    font-size: 1.25rem;
+  }
+
+  .cardTextPlaying {
+    font-size: 1.25rem;
+  }
+}
+
+@property --x {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.playing {
+  background: linear-gradient(
+    var(--x),
+    #ff0000,
+    #ff5100,
+    #ffd800,
+    #9fff00,
+    #2fff00,
+    #00ffbe,
+    #00c5ff,
+    #006bff,
+    #6b00ff,
+    #e700ff,
+    #ff009b
+  );
+  animation: cardFX 3s infinite linear;
+  padding: 0.25rem;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+@keyframes cardFX {
+  0% {
+    --x: 0deg;
+  }
+  100% {
+    --x: 360deg;
+  }
+}

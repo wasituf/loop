@@ -1,0 +1,95 @@
+.controlsContainer {
+  padding: 1rem 2rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: #000;
+}
+
+.gridItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controlBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 150px;
+  background: #fff;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+@property --x {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.controlBtnOuter {
+  background: linear-gradient(
+    var(--x),
+    #ff0000,
+    #ff5100,
+    #ffd800,
+    #9fff00,
+    #2fff00,
+    #00ffbe,
+    #00c5ff,
+    #006bff,
+    #6b00ff,
+    #e700ff,
+    #ff009b
+  );
+  animation: cardFX 3s infinite linear;
+  padding: 0.25rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controlBtnOuterPaused {
+  background: #888;
+  padding: 0.25rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@keyframes cardFX {
+  0% {
+    --x: 0deg;
+  }
+  100% {
+    --x: 360deg;
+  }
+}
+
+.btnPlay {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-left: 24px solid #111111;
+  border-bottom: 12px solid transparent;
+  margin-left: 5px;
+}
+
+.btnPauseLeft {
+  width: 6px;
+  height: 22px;
+  background: #111111;
+}
+
+.btnPauseRight {
+  width: 6px;
+  height: 22px;
+  background: #111111;
+  margin-left: 6px;
+}
