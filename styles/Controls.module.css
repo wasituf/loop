@@ -93,3 +93,26 @@
   background: #111111;
   margin-left: 6px;
 }
+
+/** EQ */
+.eq {
+  outline: none;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  transform: rotate(-90deg);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.eqRotateIn {
+  transform: rotate(180deg);
+  transition: all 0.5s;
+  color: #fff;
+}
+
+.eqRotateOut {
+  transition: all 0.5s;
+  transform: rotate(-180deg);
+  color: #fff;
+}

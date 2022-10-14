@@ -1,11 +1,13 @@
 import styles from '../styles/Controls.module.css'
+import { FaSlidersH } from 'react-icons/fa'
+import { MdVolumeUp, MDVolumeOff } from 'react-icons/md'
 import { useState, useEffect } from 'react'
 
 export default function Controls({
   playing,
   switchPlayState,
-  volume,
-  updateVolume,
+  eqState,
+  updateEqState,
 }) {
   return (
     <footer className={styles.controlsContainer}>
@@ -27,6 +29,20 @@ export default function Controls({
             )}
           </button>
         </div>
+      </div>
+      <div className={styles.gridItem}>
+        <button
+          className={styles.eq}
+          onClick={e => {
+            updateEqState(e)
+          }}
+        >
+          <FaSlidersH
+            size={24}
+            style={{ color: `#${eqState ? '555' : 'fff'}` }}
+            className={eqState ? styles.eqRotateIn : styles.eqRotateOut}
+          />
+        </button>
       </div>
     </footer>
   )

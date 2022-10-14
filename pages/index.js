@@ -6,19 +6,19 @@ import EffectCard from '../components/EffectCard'
 import VolumeBar from '../components/VolumeBar'
 import { useState, useEffect } from 'react'
 
-export default function HomePage() {
+export default function HomePage({ data }) {
   const [playing, setPlaying] = useState(true)
-  const SFX = [
-    { name: 'Rain', filename: 'rain' },
-    { name: 'Fire', filename: 'fire' },
-    { name: 'Cricket', filename: 'cricket' },
-    { name: 'White Noise', filename: 'white-noise' },
-  ]
   const [volume, setVolume] = useState(null)
+  const [eqState, setEqState] = useState(false)
+  const SFX = data
 
   useEffect(() => {
-    if (localStorage.getItem('volume') !== null)
+    if (localStorage.getItem('volume') !== null) {
       setVolume(localStorage.getItem('volume'))
+    } else {
+      localStorage.setItem('volume', '0.5')
+      setVolume(localStorage.getItem('volume'))
+    }
   }, [])
 
   useEffect(() => {
@@ -39,6 +39,10 @@ export default function HomePage() {
     }
   }
 
+  const updateEqState = () => {
+    setEqState(!eqState)
+  }
+
   return (
     <>
       <Head>
@@ -47,30 +51,50 @@ export default function HomePage() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Header />
-      <VolumeBar
-        volume={volume}
-        updateVolume={updateVolume}
-        playing={playing}
-      />
+      <Header updateVolume={updateVolume} volume={volume} playing={playing} />
 
       <main className={styles.parentContainer}>
+        <div
+          className={styles.alert}
+          style={{ visibility: eqState ? 'visible' : 'hidden' }}
+        >
+          EQ Mode
+        </div>
         <div className={styles.container}>
-          {SFX.map((sfx, index) => {
-            return (
-              <EffectCard
-                key={index}
-                name={sfx.name}
-                filename={sfx.filename}
-                masterPlaying={playing}
-                volume={volume}
-              />
-            )
-          })}
+          {SFX.length &&
+            SFX.map((sfx, index) => {
+              return (
+                <EffectCard
+                  key={index}
+                  name={sfx.name}
+                  filename={sfx.filename}
+                  masterPlaying={playing}
+                  volume={volume}
+                  eqState={eqState}
+                />
+              )
+            })}
         </div>
       </main>
 
-      <Controls playing={playing} switchPlayState={handlePlayState} />
+      <Controls
+        playing={playing}
+        switchPlayState={handlePlayState}
+        eqState={eqState}
+        updateEqState={updateEqState}
+      />
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:3000/api', {
+    method: 'GET',
+  })
+
+  const data = await res.json()
+
+  return {
+    props: { data },
+  }
 }
