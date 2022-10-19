@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
 import Controls from '../components/Controls'
 import EffectCard from '../components/EffectCard'
+import InstallScreen from '../components/InstallScreen'
 import { useState, useEffect } from 'react'
 import InfoTab from '../components/InfoTab'
 
@@ -10,6 +11,7 @@ export default function HomePage() {
   const [playing, setPlaying] = useState(true)
   const [volume, setVolume] = useState(null)
   const [eqState, setEqState] = useState(false)
+  const [bipEvent, setBipEvent] = useState(null)
   const SFX = [
     { 'name': 'Rain', 'filename': 'rain.mp3' },
     { 'name': 'Fire', 'filename': 'fire.mp3' },
@@ -27,7 +29,15 @@ export default function HomePage() {
       localStorage.setItem('volume', '0.5')
       setVolume(localStorage.getItem('volume'))
     }
-  }, [])
+
+    // bipEvent
+    if (bipEvent === null) {
+      window.addEventListener('beforeinstallprompt', e => {
+        e.preventDefault()
+        setBipEvent(e)
+      })
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (volume !== null) {
@@ -51,6 +61,16 @@ export default function HomePage() {
     setEqState(!eqState)
   }
 
+  const installPrompt = () => {
+    if (bipEvent) {
+      bipEvent.prompt()
+    } else {
+      alert(
+        "To install the app look for Add to Homescreen or Install in your browser's menu",
+      )
+    }
+  }
+
   return (
     <>
       <Head>
@@ -59,9 +79,7 @@ export default function HomePage() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='install-bg'>
-        <button className='install-btn'>Install</button>
-      </div>
+      <InstallScreen installPrompt={installPrompt} />
 
       <Header
         updateVolume={updateVolume}
