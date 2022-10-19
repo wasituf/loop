@@ -1,13 +1,15 @@
 .cardContainer {
   padding: 0.25rem;
-  background-color: #111;
+  background-color: var(--card-color);
   border-radius: 35px;
   cursor: pointer;
+  box-shadow: var(--card-shadow);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card {
   display: flex;
-  background: #000;
+  background: var(--card-color);
   border-radius: 30px;
   padding: 8rem 0;
   justify-content: center;
@@ -24,7 +26,7 @@
   justify-content: center;
   align-items: center;
   aspect-ratio: 1;
-  background: rgb(27, 27, 27);
+  background: var(--wave-color);
   overflow: hidden;
   position: relative;
   flex-direction: column;
@@ -39,7 +41,7 @@
   left: 50%;
   min-width: 400%;
   min-height: 400%;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--card-color);
   animation-name: rotate;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -117,6 +119,7 @@
   padding: 0.25rem;
   border-radius: 35px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes cardFX {

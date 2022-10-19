@@ -1,11 +1,15 @@
 .parentContainer {
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
+  max-width: 100%;
   min-height: calc(100vh - 201px);
   justify-content: center;
   align-items: center;
-  margin-bottom: 132px;
+  margin-bottom: 116px;
+}
+
+.parentContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .container {
@@ -19,7 +23,7 @@
 
 @media (max-width: 1080px) {
   .container {
-    min-width: 100vw;
+    min-width: 100%;
   }
 }
 
@@ -33,10 +37,4 @@
   .container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-
-.alert {
-  color: #fff;
-  margin-bottom: 1rem;
-  font-weight: bold;
 }

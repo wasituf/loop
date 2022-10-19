@@ -17,7 +17,7 @@ export default function EffectCard({
     } else {
       setEffectVolume(localStorage.getItem(filename))
     }
-  }, [])
+  }, [filename]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const changeState = e => {
     const audio = e.target.querySelector('audio')

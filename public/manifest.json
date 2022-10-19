@@ -1,0 +1,35 @@
+{
+  "name": "Loop - Music and Relaxation",
+  "short_name": "Loop",
+  "start_url": "/?utm_source=pwa",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "scope": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "description": "Get deep into zen mode with real-world sounds and amazing presets.",
+  "screenshots": [
+    {
+      "src": "icons/screenshot.png",
+      "sizes": "361x743",
+      "type": "image/png"
+    }
+  ]
+}

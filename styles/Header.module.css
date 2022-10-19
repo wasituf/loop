@@ -1,2 +1,16 @@
 .headerContainer {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2000;
+  background: #000;
+  padding-top: 1.25rem;
+  text-align: center;
+  /* mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 0,
+    black calc(100% - 8px),
+    transparent 100%
+  ); */
 }

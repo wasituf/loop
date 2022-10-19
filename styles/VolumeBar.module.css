@@ -3,6 +3,7 @@
   width: 100%;
   transform: translateY(5px);
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .slider,
@@ -34,6 +35,13 @@
   overflow: hidden;
   top: 13px;
   pointer-events: none;
+}
+
+@media (display-mode: standalone) {
+  .sliderThumb,
+  .sliderThumbPlaying {
+    top: 11px;
+  }
 }
 
 .sliderThumbPlaying {

@@ -3,14 +3,22 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
 import Controls from '../components/Controls'
 import EffectCard from '../components/EffectCard'
-import VolumeBar from '../components/VolumeBar'
 import { useState, useEffect } from 'react'
+import InfoTab from '../components/InfoTab'
 
-export default function HomePage({ data }) {
+export default function HomePage() {
   const [playing, setPlaying] = useState(true)
   const [volume, setVolume] = useState(null)
   const [eqState, setEqState] = useState(false)
-  const SFX = data
+  const SFX = [
+    { 'name': 'Rain', 'filename': 'rain.mp3' },
+    { 'name': 'Fire', 'filename': 'fire.mp3' },
+    { 'name': 'Cricket', 'filename': 'cricket.mp3' },
+    { 'name': 'Birds', 'filename': 'birds.ogg' },
+    { 'name': 'Water', 'filename': 'water.ogg' },
+    { 'name': 'Waves', 'filename': 'waves.ogg' },
+    { 'name': 'Cicadas', 'filename': 'cicada.ogg' },
+  ]
 
   useEffect(() => {
     if (localStorage.getItem('volume') !== null) {
@@ -51,15 +59,20 @@ export default function HomePage({ data }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Header updateVolume={updateVolume} volume={volume} playing={playing} />
+      <div className='install-bg'>
+        <button className='install-btn'>Install</button>
+      </div>
+
+      <Header
+        updateVolume={updateVolume}
+        volume={volume}
+        playing={playing}
+        eqState={eqState}
+      />
+
+      <InfoTab eqState={eqState} />
 
       <main className={styles.parentContainer}>
-        <div
-          className={styles.alert}
-          style={{ visibility: eqState ? 'visible' : 'hidden' }}
-        >
-          EQ Mode
-        </div>
         <div className={styles.container}>
           {SFX.length &&
             SFX.map((sfx, index) => {
@@ -85,16 +98,4 @@ export default function HomePage({ data }) {
       />
     </>
   )
-}
-
-export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api', {
-    method: 'GET',
-  })
-
-  const data = await res.json()
-
-  return {
-    props: { data },
-  }
 }

@@ -1,0 +1,73 @@
+.container {
+  padding: 1rem 2rem;
+  margin-top: 79px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.isNoneOverflowing,
+.isLeftOverflowing,
+.isRightOverflowing,
+.isBothOverflowing {
+  white-space: nowrap;
+  display: flex;
+  overflow-x: auto;
+  -mx-overflow-style: none;
+  scrollbar-width: none;
+  max-width: 1080px;
+}
+
+.isNoneOverflowing {
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    #111 0,
+    #111 calc(100% - 0),
+    transparent 100%
+  );
+}
+.isLeftOverflowing {
+  mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    #111 0,
+    #111 calc(100% - 24px),
+    transparent 100%
+  );
+}
+.isRightOverflowing {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #111 0,
+    #111 calc(100% - 24px),
+    transparent 100%
+  );
+}
+.isBothOverflowing {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #111 24px,
+    #111 calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.isNoneOverflowing::-webkit-scrollbar,
+.isLeftOverflowing::-webkit-scrollbar,
+.isRightOverflowing::-webkit-scrollbar,
+.isBothOverflowing::-webkit-scrollbar {
+  display: none;
+}
+
+.preset {
+  padding: 0.5rem 1rem;
+  background: #222;
+  border-radius: 50px;
+  color: #fff;
+  margin-right: 0.5rem;
+  user-select: none;
+  cursor: pointer;
+}
