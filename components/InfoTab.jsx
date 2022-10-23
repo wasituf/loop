@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/InfoTab.module.css'
 
-export default function InfoTab({ eqState }) {
+export default function InfoTab() {
   const [scrollStyle, setScrollStyle] = useState(styles.isRightOverflowing)
 
   useEffect(() => {
@@ -36,10 +36,16 @@ export default function InfoTab({ eqState }) {
     }
   }
 
+  const handlePreset = e => {
+    e.target.style.background = '#d9d9d9'
+  }
+
   return (
     <div className={styles.container}>
       <div className={scrollStyle} onScroll={updateScrollStyles}>
-        <div className={styles.preset}>Beach</div>
+        <div onClick={handlePreset} className={styles.preset}>
+          Beach
+        </div>
         <div className={styles.preset}>Forest</div>
         <div className={styles.preset}>Moody</div>
         <div className={styles.preset}>Bonfire</div>

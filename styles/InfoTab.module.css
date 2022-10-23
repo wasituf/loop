@@ -1,6 +1,6 @@
 .container {
-  padding: 1rem 2rem;
-  margin-top: 79px;
+  padding: 0 1rem;
+  margin-top: 69px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,10 @@
   -mx-overflow-style: none;
   scrollbar-width: none;
   max-width: 1080px;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .isNoneOverflowing {
@@ -64,10 +68,14 @@
 
 .preset {
   padding: 0.5rem 1rem;
-  background: #222;
+  background: var(--card-color);
+  box-shadow: var(--card-shadow);
   border-radius: 50px;
-  color: #fff;
+  color: #333;
+  font-weight: 600;
   margin-right: 0.5rem;
   user-select: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: all 0.2s;
 }

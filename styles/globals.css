@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700&display=swap');
+
 :root {
-  --card-color: #222;
-  --wave-color: rgb(24, 24, 24);
-  --card-shadow: 0 0 15px rgb(0, 0, 0);
+  --card-color: #ededed;
+  --wave-color: rgb(216, 216, 216);
+  --card-shadow: -7px 7px 14px #e1e1e1, 7px -7px 14px #f9f9f9;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #111;
+  font-family: 'Dosis', sans-serif;
+  background: var(--card-color);
   overflow: auto;
   overflow-x: hidden;
   -ms-overflow-style: none;
@@ -49,9 +50,26 @@ a {
   font-size: 18px;
   padding: 0.7rem 1.4rem;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  position: relative;
 }
 
-@media (max-width: 600px) and (display-mode: browser) {
+span.ripple {
+  position: absolute; /* The absolute position we mentioned earlier */
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 500ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* @media (max-width: 600px) and (display-mode: browser) {
   .install-bg {
     width: 100vw;
     height: 100vh;
@@ -69,4 +87,9 @@ a {
   .install-btn {
     display: block;
   }
-}
+
+  html,
+  body {
+    overflow-y: hidden;
+  }
+} */

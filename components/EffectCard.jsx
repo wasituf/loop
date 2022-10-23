@@ -1,13 +1,7 @@
 import styles from '../styles/EffectCard.module.css'
 import { useEffect, useState } from 'react'
 
-export default function EffectCard({
-  name,
-  masterPlaying,
-  volume,
-  filename,
-  eqState,
-}) {
+export default function EffectCard({ name, masterPlaying, volume, filename }) {
   const [playing, setPlaying] = useState(false)
   const [effectVolume, setEffectVolume] = useState(0.5)
 
@@ -35,7 +29,7 @@ export default function EffectCard({
   }
 
   return (
-    <div className={playing ? styles.playing : styles.cardContainer}>
+    <div className={styles.parentDiv}>
       <div
         onClick={changeState}
         className={playing ? styles.cardPlaying : styles.card}
@@ -54,26 +48,6 @@ export default function EffectCard({
           ></div>
         )}
 
-        <div className={styles.sliderContainer}>
-          <input
-            className={styles.slider}
-            type='range'
-            min={'0'}
-            max={'1'}
-            step={'0.01'}
-            value={effectVolume}
-            onChange={e => {
-              setEffectVolume(e.target.value)
-              localStorage.setItem(filename, e.target.value)
-            }}
-            controls
-            style={{
-              zIndex: '2000',
-              pointerEvents: `${eqState && playing ? 'all' : 'none'}`,
-            }}
-          />
-        </div>
-
         <audio
           src={`/audio/${filename}`}
           onTimeUpdate={e => {
@@ -88,10 +62,26 @@ export default function EffectCard({
         ></audio>
         <p
           onClick={changeState}
-          className={masterPlaying ? styles.cardText : styles.cardTextPlaying}
+          className={!playing ? styles.cardText : styles.cardTextPlaying}
         >
           {name}
         </p>
+      </div>
+
+      <div className={styles.sliderContainer}>
+        <input
+          className={styles.slider}
+          type='range'
+          min={'0'}
+          max={'1'}
+          step={'0.01'}
+          value={effectVolume}
+          onChange={e => {
+            setEffectVolume(e.target.value)
+            localStorage.setItem(filename, e.target.value)
+          }}
+          controls
+        />
       </div>
     </div>
   )

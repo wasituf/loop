@@ -1,16 +1,32 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import styles from '../styles/Header.module.css'
-import VolumeBar from './VolumeBar'
 
-export default function Header({ updateVolume, volume, playing, eqState }) {
+export default function Header({}) {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const handleHamburgerClick = e => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
     <header className={styles.headerContainer}>
-      <Image src='/logo.png' alt='' width={119} height={34} />
-      <VolumeBar
-        updateVolume={updateVolume}
-        volume={volume}
-        playing={playing}
-      />
+      <div className={styles.innerDiv}>
+        <button onClick={handleHamburgerClick} className={styles.hamburger}>
+          <div
+            className={styles.top}
+            style={{
+              transform: menuOpen && 'rotate(-25deg) translateY(1px)',
+            }}
+          ></div>
+          <div
+            className={styles.bottom}
+            style={{
+              transform: menuOpen && 'rotate(25deg) translateY(-1px)',
+            }}
+          ></div>
+        </button>
+      </div>
     </header>
   )
 }

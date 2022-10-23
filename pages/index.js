@@ -6,11 +6,11 @@ import EffectCard from '../components/EffectCard'
 import InstallScreen from '../components/InstallScreen'
 import { useState, useEffect } from 'react'
 import InfoTab from '../components/InfoTab'
+import { rippleEffect } from '../lib/functions'
 
 export default function HomePage() {
   const [playing, setPlaying] = useState(true)
   const [volume, setVolume] = useState(null)
-  const [eqState, setEqState] = useState(false)
   const [bipEvent, setBipEvent] = useState(null)
   const SFX = [
     { 'name': 'Rain', 'filename': 'rain.mp3' },
@@ -57,15 +57,13 @@ export default function HomePage() {
     }
   }
 
-  const updateEqState = () => {
-    setEqState(!eqState)
-  }
+  const installPrompt = e => {
+    rippleEffect(e)
 
-  const installPrompt = () => {
     if (bipEvent) {
       bipEvent.prompt()
     } else {
-      alert(
+      console.log(
         "To install the app look for Add to Homescreen or Install in your browser's menu",
       )
     }
@@ -81,14 +79,9 @@ export default function HomePage() {
 
       <InstallScreen installPrompt={installPrompt} />
 
-      <Header
-        updateVolume={updateVolume}
-        volume={volume}
-        playing={playing}
-        eqState={eqState}
-      />
+      <Header updateVolume={updateVolume} volume={volume} playing={playing} />
 
-      <InfoTab eqState={eqState} />
+      <InfoTab />
 
       <main className={styles.parentContainer}>
         <div className={styles.container}>
@@ -101,7 +94,6 @@ export default function HomePage() {
                   filename={sfx.filename}
                   masterPlaying={playing}
                   volume={volume}
-                  eqState={eqState}
                 />
               )
             })}
@@ -111,8 +103,8 @@ export default function HomePage() {
       <Controls
         playing={playing}
         switchPlayState={handlePlayState}
-        eqState={eqState}
-        updateEqState={updateEqState}
+        volume={volume}
+        updateVolume={updateVolume}
       />
     </>
   )
