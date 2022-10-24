@@ -5,7 +5,8 @@
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "scope": "/",
-  "display": "standalone",
+  "display": "fullscreen",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "icons/icon-512.png",

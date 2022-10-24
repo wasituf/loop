@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/InfoTab.module.css'
+import Preset from './Preset'
 
-export default function InfoTab() {
+export default function InfoTab({ presets }) {
   const [scrollStyle, setScrollStyle] = useState(styles.isRightOverflowing)
 
   useEffect(() => {
@@ -36,22 +37,19 @@ export default function InfoTab() {
     }
   }
 
-  const handlePreset = e => {
-    e.target.style.background = '#d9d9d9'
-  }
-
   return (
     <div className={styles.container}>
       <div className={scrollStyle} onScroll={updateScrollStyles}>
-        <div onClick={handlePreset} className={styles.preset}>
-          Beach
-        </div>
-        <div className={styles.preset}>Forest</div>
-        <div className={styles.preset}>Moody</div>
-        <div className={styles.preset}>Bonfire</div>
-        <div className={styles.preset}>Some name</div>
-        <div className={styles.preset}>Some name</div>
-        <div className={styles.preset}>Some name</div>
+        {presets.map((preset, index) => {
+          return (
+            <Preset
+              key={index}
+              id={preset.name.toLowerCase()}
+              name={preset.name}
+              effects={preset.effects}
+            />
+          )
+        })}
       </div>
     </div>
   )

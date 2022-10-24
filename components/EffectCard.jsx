@@ -1,27 +1,42 @@
 import styles from '../styles/EffectCard.module.css'
 import { useEffect, useState } from 'react'
 
-export default function EffectCard({ name, masterPlaying, volume, filename }) {
+export default function EffectCard({
+  name,
+  masterPlaying,
+  volume,
+  filename,
+  presets,
+}) {
   const [playing, setPlaying] = useState(false)
   const [effectVolume, setEffectVolume] = useState(0.5)
 
   useEffect(() => {
-    if (localStorage.getItem(filename) === null) {
-      localStorage.setItem(filename, effectVolume)
+    if (localStorage.getItem(name.toLowerCase()) === null) {
+      localStorage.setItem(name.toLowerCase(), effectVolume)
     } else {
-      setEffectVolume(localStorage.getItem(filename))
+      setEffectVolume(localStorage.getItem(name.toLowerCase()))
     }
-  }, [filename]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [name]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const changeState = e => {
+    // if(localStorage.getItem('presetActive') === true) {
+    //   presets.map(prst => {
+    //     const preset = document.getElementById(prst.name.toLowerCase())
+
+    //   })
+    // }
+
     const audio = e.target.querySelector('audio')
     if (audio) {
       audio.muted = !masterPlaying
       audio.volume = (effectVolume / 100) * (volume * 100)
       if (audio.paused) {
+        console.log('playing audio...')
         audio.play()
         setPlaying(true)
       } else if (!audio.paused) {
+        console.log('pausing...')
         audio.pause()
         setPlaying(false)
       }
@@ -49,6 +64,7 @@ export default function EffectCard({ name, masterPlaying, volume, filename }) {
         )}
 
         <audio
+          id={'effect-' + name.toLowerCase()}
           src={`/audio/${filename}`}
           onTimeUpdate={e => {
             const audio = e.target
@@ -57,7 +73,8 @@ export default function EffectCard({ name, masterPlaying, volume, filename }) {
               audio.play()
             }
             audio.muted = !masterPlaying
-            audio.volume = (effectVolume / 100) * (volume * 100)
+            audio.volume =
+              (localStorage.getItem(name.toLowerCase()) / 100) * (volume * 100)
           }}
         ></audio>
         <p
@@ -70,6 +87,7 @@ export default function EffectCard({ name, masterPlaying, volume, filename }) {
 
       <div className={styles.sliderContainer}>
         <input
+          id={'slider-' + name.toLowerCase()}
           className={styles.slider}
           type='range'
           min={'0'}
@@ -78,7 +96,7 @@ export default function EffectCard({ name, masterPlaying, volume, filename }) {
           value={effectVolume}
           onChange={e => {
             setEffectVolume(e.target.value)
-            localStorage.setItem(filename, e.target.value)
+            localStorage.setItem(name.toLowerCase(), e.target.value)
           }}
           controls
         />

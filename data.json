@@ -1,0 +1,18 @@
+{
+  "sfxData": [
+    { "name": "Rain", "filename": "rain.mp3" },
+    { "name": "Fire", "filename": "fire.mp3" },
+    { "name": "Cricket", "filename": "cricket.mp3" },
+    { "name": "Birds", "filename": "birds.ogg" },
+    { "name": "Water", "filename": "water.ogg" },
+    { "name": "Waves", "filename": "waves.ogg" },
+    { "name": "Cicadas", "filename": "cicada.ogg" }
+  ],
+
+  "presetData": [
+    {
+      "name": "Summer",
+      "effects": ["birds.90", "water.75", "cicadas.60"]
+    }
+  ]
+}

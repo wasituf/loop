@@ -16,13 +16,13 @@ export default function Header({}) {
           <div
             className={styles.top}
             style={{
-              transform: menuOpen && 'rotate(-25deg) translateY(1px)',
+              transform: menuOpen ? 'rotate(-25deg) translateY(1px)' : 'none',
             }}
           ></div>
           <div
             className={styles.bottom}
             style={{
-              transform: menuOpen && 'rotate(25deg) translateY(-1px)',
+              transform: menuOpen ? 'rotate(25deg) translateY(-1px)' : 'none',
             }}
           ></div>
         </button>

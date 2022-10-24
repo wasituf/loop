@@ -7,20 +7,14 @@ import InstallScreen from '../components/InstallScreen'
 import { useState, useEffect } from 'react'
 import InfoTab from '../components/InfoTab'
 import { rippleEffect } from '../lib/functions'
+const data = require('../data.json')
 
 export default function HomePage() {
   const [playing, setPlaying] = useState(true)
   const [volume, setVolume] = useState(null)
   const [bipEvent, setBipEvent] = useState(null)
-  const SFX = [
-    { 'name': 'Rain', 'filename': 'rain.mp3' },
-    { 'name': 'Fire', 'filename': 'fire.mp3' },
-    { 'name': 'Cricket', 'filename': 'cricket.mp3' },
-    { 'name': 'Birds', 'filename': 'birds.ogg' },
-    { 'name': 'Water', 'filename': 'water.ogg' },
-    { 'name': 'Waves', 'filename': 'waves.ogg' },
-    { 'name': 'Cicadas', 'filename': 'cicada.ogg' },
-  ]
+  const SFX = data.sfxData
+  const presets = data.presetData
 
   useEffect(() => {
     if (localStorage.getItem('volume') !== null) {
@@ -81,7 +75,7 @@ export default function HomePage() {
 
       <Header updateVolume={updateVolume} volume={volume} playing={playing} />
 
-      <InfoTab />
+      <InfoTab presets={presets} />
 
       <main className={styles.parentContainer}>
         <div className={styles.container}>
