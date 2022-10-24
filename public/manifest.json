@@ -2,8 +2,8 @@
   "name": "Loop - Music and Relaxation",
   "short_name": "Loop",
   "start_url": "/?utm_source=pwa",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "scope": "/",
   "display": "standalone",
   "icons": [
@@ -24,7 +24,7 @@
       "purpose": "maskable"
     }
   ],
-  "description": "Get deep into zen mode with real-world sounds and amazing presets.",
+  "description": "Get deep into zen-mode with real-world sounds and amazing presets.",
   "screenshots": [
     {
       "src": "icons/screenshot.png",

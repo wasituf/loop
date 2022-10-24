@@ -5,7 +5,6 @@
   bottom: 0;
   z-index: 1000;
   padding: 1rem 1rem;
-  padding-top: 1.5rem;
   background: var(--card-color);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }

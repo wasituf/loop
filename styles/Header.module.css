@@ -4,9 +4,6 @@
   top: 0;
   z-index: 2000;
   background: #ededed;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  opacity: 0.9;
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: center;
