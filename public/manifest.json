@@ -1,12 +1,12 @@
 {
   "name": "Loop - Music and Relaxation",
   "short_name": "Loop",
-  "start_url": "/?utm_source=pwa",
+  "start_url": "/",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "scope": "/",
-  "display": "fullscreen",
-  "orientation": "portrait-primary",
+  "display": "standalone",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icons/icon-512.png",
