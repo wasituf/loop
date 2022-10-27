@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { rippleEffect } from '../lib/functions'
 import styles from '../styles/InfoTab.module.css'
 
 export default function Preset({ id, name, effects }) {
@@ -10,11 +11,11 @@ export default function Preset({ id, name, effects }) {
     if (active) {
       preset.style.background = '#333333'
       preset.style.color = '#ededed'
-      preset.style.boxShadow = '-2px 2px 10px rgba(0,0,0,0.3)'
+      preset.style.boxShadow = 'var(--btn-shadow-secondary)'
     } else {
       preset.style.background = 'var(--card-color)'
       preset.style.color = '#333333'
-      preset.style.boxShadow = 'var(--card-shadow)'
+      preset.style.boxShadow = 'var(--btn-shadow-primary)'
     }
 
     if (active) {

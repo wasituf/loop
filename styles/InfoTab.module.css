@@ -1,9 +1,15 @@
 .container {
   padding: 0 1rem;
-  margin-top: 69px;
+  margin-top: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (display-mode: browser) {
+  .container {
+    margin-top: 54px;
+  }
 }
 
 .isNoneOverflowing,
@@ -69,7 +75,7 @@
 .preset {
   padding: 0.5rem 1rem;
   background: var(--card-color);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--btn-shadow-primary);
   border-radius: 50px;
   color: #333;
   font-weight: 600;

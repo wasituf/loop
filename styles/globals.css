@@ -4,6 +4,8 @@
   --card-color: #ededed;
   --wave-color: rgb(216, 216, 216);
   --card-shadow: -7px 7px 14px #e1e1e1, 7px -7px 14px #f9f9f9;
+  --btn-shadow-secondary: 0 2px 5px rgba(0, 0, 0, 0.3);
+  --btn-shadow-primary: 0 2px 5px rgba(145, 45, 45, 0.1);
 }
 
 html,
@@ -49,7 +51,7 @@ a {
   transition: all 0.1s ease-in-out;
   position: relative;
   font-family: 'Dosis', sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--btn-shadow-secondary);
 }
 
 .install-btn svg {
