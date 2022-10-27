@@ -71,9 +71,12 @@ export default function HomePage() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <InstallScreen installPrompt={installPrompt} />
-
-      <Header updateVolume={updateVolume} volume={volume} playing={playing} />
+      <Header
+        updateVolume={updateVolume}
+        volume={volume}
+        playing={playing}
+        installPrompt={installPrompt}
+      />
 
       <InfoTab presets={presets} />
 

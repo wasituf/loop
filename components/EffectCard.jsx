@@ -20,12 +20,7 @@ export default function EffectCard({
   }, [name]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const changeState = e => {
-    // if(localStorage.getItem('presetActive') === true) {
-    //   presets.map(prst => {
-    //     const preset = document.getElementById(prst.name.toLowerCase())
-
-    //   })
-    // }
+    // TODO: useContext to set presets to off
 
     const audio = e.target.querySelector('audio')
     if (audio) {

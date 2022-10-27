@@ -36,22 +36,88 @@ a {
   box-sizing: border-box;
 }
 
-.install-bg {
-  display: none;
-}
-
 .install-btn {
   display: none;
   border: none;
-  border-radius: 10px;
-  background: #000;
+  border-radius: 999px;
+  background: #222;
   color: #fff;
   font-weight: bold;
-  font-size: 18px;
-  padding: 0.7rem 1.4rem;
+  font-size: 16px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   position: relative;
+  font-family: 'Dosis', sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.install-btn svg {
+  animation: btnFxLoad 0.3s linear reverse;
+  position: relative;
+  top: 2px;
+}
+
+.install-btn:hover svg {
+  animation: btnFx 0.3s linear alternate;
+}
+
+@keyframes btnFx {
+  0% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  70% {
+    transform: translateY(-30px);
+  }
+  71% {
+    transform: translateX(200px) translateY(-30px);
+  }
+  72% {
+    transform: translateX(200px) translateY(30x);
+  }
+  73% {
+    transform: translateX(0) translateY(30px);
+  }
+  100% {
+    tranform: translateY(0);
+  }
+}
+
+@keyframes btnFxLoad {
+  0% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  70% {
+    transform: translateY(-30px);
+  }
+  71% {
+    transform: translateX(200px) translateY(-30px);
+  }
+  72% {
+    transform: translateX(200px) translateY(30x);
+  }
+  73% {
+    transform: translateX(0) translateY(30px);
+  }
+  100% {
+    tranform: translateY(0);
+  }
+}
+
+.install-btn span {
+  margin-right: 6px;
 }
 
 span.ripple {
@@ -59,7 +125,7 @@ span.ripple {
   border-radius: 50%;
   transform: scale(0);
   animation: ripple 500ms linear;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: #ededed96;
 }
 
 @keyframes ripple {
@@ -69,27 +135,8 @@ span.ripple {
   }
 }
 
-/* @media (max-width: 600px) and (display-mode: browser) {
-  .install-bg {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 12000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-  }
-
+@media (display-mode: browser) {
   .install-btn {
     display: block;
   }
-
-  html,
-  body {
-    overflow-y: hidden;
-  }
-} */
+}
