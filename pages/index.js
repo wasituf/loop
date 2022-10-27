@@ -90,6 +90,7 @@ export default function HomePage() {
                   filename={sfx.filename}
                   masterPlaying={playing}
                   volume={volume}
+                  presets={presets}
                 />
               )
             })}

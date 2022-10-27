@@ -17,21 +17,34 @@ export default function EffectCard({
     } else {
       setEffectVolume(localStorage.getItem(name.toLowerCase()))
     }
-  }, [name]) // eslint-disable-line react-hooks/exhaustive-deps
+
+    if (playing) {
+      localStorage.setItem(name.toLowerCase() + 'Playing', 'true')
+    } else {
+      localStorage.setItem(name.toLowerCase() + 'Playing', 'false')
+    }
+  }, [name, playing]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const changeState = e => {
     // TODO: useContext to set presets to off
+    presets.forEach(preset => {
+      if (localStorage.getItem(preset.name) === 'true') {
+        document.getElementById(preset.name).click()
+        preset.effects.forEach(effect => {
+          const sfxId = effect.split('.')[0]
+          document.getElementById('effect-' + sfxId).click()
+        })
+      }
+    })
 
     const audio = e.target.querySelector('audio')
     if (audio) {
       audio.muted = !masterPlaying
       audio.volume = (effectVolume / 100) * (volume * 100)
       if (audio.paused) {
-        console.log('playing audio...')
         audio.play()
         setPlaying(true)
       } else if (!audio.paused) {
-        console.log('pausing...')
         audio.pause()
         setPlaying(false)
       }

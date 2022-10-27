@@ -44,7 +44,7 @@ export default function InfoTab({ presets }) {
           return (
             <Preset
               key={index}
-              id={preset.name.toLowerCase()}
+              id={preset.name}
               name={preset.name}
               effects={preset.effects}
             />

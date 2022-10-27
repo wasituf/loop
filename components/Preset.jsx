@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { rippleEffect } from '../lib/functions'
 import styles from '../styles/InfoTab.module.css'
 
 export default function Preset({ id, name, effects }) {
@@ -19,14 +18,23 @@ export default function Preset({ id, name, effects }) {
     }
 
     if (active) {
-      localStorage.setItem('presetActive', true)
+      localStorage.setItem(id, true)
     } else {
-      localStorage.setItem('presetActive', false)
+      localStorage.setItem(id, false)
     }
   }, [active]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handlePreset = e => {
-    setActive(!active)
+    if (!active) {
+      const effectsArr = document.querySelectorAll('[id^="effect-"]')
+      effectsArr.forEach(effect => {
+        const effectName = effect.id.split('-')[1]
+
+        if (localStorage.getItem(effectName + 'Playing') === 'true') {
+          effect.parentElement.click()
+        }
+      })
+    }
 
     effects.forEach(effect => {
       const sfxId = effect.split('.')[0]
@@ -34,8 +42,19 @@ export default function Preset({ id, name, effects }) {
       const sfx = document.getElementById('effect-' + sfxId)
 
       localStorage.setItem(sfxId, +sfxVolume / 100)
-      sfx.parentElement.click()
+
+      if (!active) {
+        if (localStorage.getItem(sfxId + 'Playing') === 'false') {
+          sfx.parentElement.click()
+        }
+      } else if (active) {
+        if (localStorage.getItem(sfxId + 'Playing') === 'true') {
+          sfx.parentElement.click()
+        }
+      }
     })
+
+    setActive(!active)
   }
 
   return (
