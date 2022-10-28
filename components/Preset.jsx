@@ -25,13 +25,17 @@ export default function Preset({ id, name, effects }) {
   }, [active]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handlePreset = e => {
-    if (!active) {
-      const effectsArr = document.querySelectorAll('[id^="effect-"]')
-      effectsArr.forEach(effect => {
+    if (localStorage.getItem(id) === 'false') {
+      let allEffects = document.querySelectorAll('[id^="effect-"]')
+      const presetEffects = effects.map(effect => effect.split('.')[0])
+
+      allEffects.forEach(effect => {
         const effectName = effect.id.split('-')[1]
 
-        if (localStorage.getItem(effectName + 'Playing') === 'true') {
-          effect.parentElement.click()
+        if (!presetEffects.includes(effectName)) {
+          if (localStorage.getItem(effectName + 'Playing') === 'true') {
+            effect.parentElement.click()
+          }
         }
       })
     }
