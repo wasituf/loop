@@ -3,8 +3,6 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head>
-        <link rel='manifest' href='/manifest.json' />
-
         <meta name='application-name' content='Loop' />
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-title' content='Loop' />
@@ -15,9 +13,10 @@ export default function Document() {
         <meta name='format-detection' content='telephone=no' />
         <meta name='mobile-web-app-capable' content='yes' />
         <meta name='msapplication-tap-highlight' content='no' />
-        <meta name='theme-color' content='#000000' />
+        <meta name='theme-color' content='#ffffff' />
 
         <link rel='apple-touch-icon' href='/icons/icon-512.png' />
+        <link rel='manifest' href='/manifest.json' />
       </Head>
       <body>
         <Main />
