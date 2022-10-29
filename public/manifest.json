@@ -28,9 +28,9 @@
   "description": "Get deep into zen-mode with real-world sounds and amazing presets.",
   "screenshots": [
     {
-      "src": "icons/screenshot.png",
-      "sizes": "361x743",
-      "type": "image/png"
+      "src": "icons/screenshot.jpeg",
+      "sizes": "390x842",
+      "type": "image/jpeg"
     }
   ]
 }
