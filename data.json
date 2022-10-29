@@ -6,13 +6,22 @@
     { "name": "Birds", "filename": "birds.ogg" },
     { "name": "Water", "filename": "water.ogg" },
     { "name": "Waves", "filename": "waves.ogg" },
-    { "name": "Cicadas", "filename": "cicada.ogg" }
+    { "name": "Cicadas", "filename": "cicada.ogg" },
+    { "name": "Seagull", "filename": "seagull.ogg" }
   ],
 
   "presetData": [
     {
       "name": "Summer",
       "effects": ["birds.90", "water.75", "cicadas.60"]
+    },
+    {
+      "name": "Bonfire",
+      "effects": ["fire.80", "cricket.40", "rain.50"]
+    },
+    {
+      "name": "Ocean",
+      "effects": ["waves.90", "seagull.30"]
     }
   ]
 }
